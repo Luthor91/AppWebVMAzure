@@ -2,6 +2,8 @@
 #  Fonctionnement
 ###########################
 
+appWebAzurePython est le nom du répertoire dans lequel vous avez trouvé ce fichier.
+
 Cette application fonctionne sur Windows et Linux avec une interface graphique fonctionnelle
 Elle permet de choisir une VM sur le cloud Azure
 Les VM possible sont : 
@@ -91,7 +93,7 @@ Pour le bon fonctionnement de l'application :
 			sudo chmod -R a+rwx /var/www/html/appWebAzurePython/
 	-Ouvrez un terminal
 	-Entrez =>	
-		sudo cp -R /chemin/vers/votre/fichier.php /var/www/html/
+		sudo cp -R /chemin/vers/le/repertoire/appWebAzurePython /var/www/html/
 		Pour la commande ci-dessous la version de python à renseigner dans la commande 
 			dépend du message d'erreur reçu lors du lancement de index.php
 		sudo apt install python3.10-venv
