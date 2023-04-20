@@ -58,15 +58,6 @@ Pour installer php :
 		sudo apt-get install php
 		/etc/init.d/apache2 restart
 
-Pour installer les packages nécessaires : 
-	-Ouvrez un terminal
-	-Entrez =>
-		sudo chmod -R a+rwx /var/www/html/appWebAzurePython/
-		sudo python3 -m venv /var/www/html/appWebAzurePython/scripts/vmazureenv vmazureenv
-		sudo chmod -R a+rwx /var/www/html/appWebAzurePython/scripts/vmazureenv
-		source /var/www/html/appWebAzurePython/scripts/vmazureenv/bin/activate
-		sudo pip install -r /var/www/html/appWebAzurePython/resources/requirements.txt
-
 Pour exécuter l'application :
 	-Aller à l'adresse suivante dans un navigateur Web =>
 		http://localhost/appWebAzurePython/php/index.php
@@ -136,18 +127,34 @@ Si il y a des lignes de codes d'affichés au lieu d'être exécutez essayez ces
 Elles permettent de donner tout droits et de convertir les fichiers php en format mieux lisible par Unix
 
 
-Si il y a des problèmes de fonctionnement de l'application
-	-sudo apt install libapache2-mod-php libapache2-mod-php8.1
-	-pip install -r chemin/vers/application/resources/requirements.txt
-	Sur Debian : 
-	sudo nano /etc/apache2/apache2.conf
-	Rajouter la ligner suivante :
-		DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
-	Sur Ubuntu : 
-		sudo nano /etc/apache2/apache2.conf
-		Rajouter la ligne suivante :
-		Include /etc/php/8.1/apache2/php.ini
-	/etc/init.d/apache2 restart
+#################################################################################
+Si il y a des problèmes de fonctionnement de l'application 
+#################################################################################
+
+Si problème de PHP : 
+	-Ouvrez un terminal
+	-Entrez =>
+		-sudo apt install libapache2-mod-php libapache2-mod-php8.1
+		-pip install -r chemin/vers/application/resources/requirements.txt
+		Sur Debian : 
+			sudo nano /etc/apache2/apache2.conf
+			Rajouter la ligner suivante :
+				DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+		Sur Ubuntu : 
+			sudo nano /etc/apache2/apache2.conf
+			Rajouter la ligne suivante :
+			Include /etc/php/8.1/apache2/php.ini
+		/etc/init.d/apache2 restart
+
+
+Si problème de package Python : 
+	-Ouvrez un terminal
+	-Entrez =>
+		sudo chmod -R a+rwx /var/www/html/appWebAzurePython/
+		sudo python3 -m venv /var/www/html/appWebAzurePython/scripts/vmazureenv vmazureenv
+		sudo chmod -R a+rwx /var/www/html/appWebAzurePython/scripts/vmazureenv
+		source /var/www/html/appWebAzurePython/scripts/vmazureenv/bin/activate
+		sudo pip install -r /var/www/html/appWebAzurePython/resources/requirements.txt
 
 Si il y a aucune VM de créée :
 	-Ouvrez un terminal
@@ -157,6 +164,8 @@ Si il y a aucune VM de créée :
 	Cette ligne de commande permet d'installer les packages qui n'ont pas réussi a être installé apr l'application
 
 Si il y a une erreur de temps d'exécution trop long :
+	modifiez la ligne 19 de php/index.php à une valeur supérieur (valeur en secondes)
+		set_time_limit(180);
 	
 
 ###########################
