@@ -168,3 +168,4 @@ un dans le répertoire php et un dans scripts, seul celui dans scripts est utili
 
 Il risque d'y avoir des problèmes d'installation si vous n'avez pas la capacité d'utiliser des commandes sudo
 
+Les mots de passes et nom d'utilisateur ne sont pas parfaitement aléatoires
