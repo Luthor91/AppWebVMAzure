@@ -1,0 +1,6 @@
+azure-common==1.1.27
+azure-mgmt-resource~=2.0
+azure-mgmt-network~=2.2
+azure-mgmt-compute~=4.3
+msrestazure==0.6.4
+haikunator

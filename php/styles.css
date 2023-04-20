@@ -1,0 +1,19 @@
+
+body {
+	margin : 0;
+	padding : 0
+}
+	/* grid-template-columns: 50% 10% 20% 20%; */
+	/* grid-template-rows: 50px 10px; */
+
+.button_AdminAccount
+{
+	display: none;
+	visibility: hidden;
+}	
+
+.refValueDeleteArticle
+{
+	display: none;
+	visibility: hidden;
+}	
