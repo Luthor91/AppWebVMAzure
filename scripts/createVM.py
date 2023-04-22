@@ -474,6 +474,7 @@ def check_os(input_str, arr=["windows", "windowsDesktop", "windowsServer", "debi
 data_conn = get_json_data('../data/azure.json')
 data_config = get_json_data('../data/config.json')
 timer_duration = int(data_config['TimerDuration'])*60
+name_virtual_machine = data_config['name_virtual_machine']
 name_os = data_config['defaultOS']
 region = data_config['defaultRegion']
 username = data_config['username']
@@ -484,25 +485,26 @@ client = data_conn['CLIENT']
 secret = data_conn['SECRET']
 subscription = data_conn['SUBSCRIPTION']
 
+VM_NAME = name_virtual_machine
+
 # Azure Datacenter
 LOCATION = region
 
 # Resource Group
-GROUP_NAME = 'azure-sample-group-virtual-machines'
+GROUP_NAME = VM_NAME + '-azure-sample-group-virtual-machines'
 
 # Network
-VNET_NAME = 'azure-sample-vnet'
-SUBNET_NAME = 'azure-sample-subnet'
+VNET_NAME = VM_NAME + '-azure-sample-vnet'
+SUBNET_NAME = VM_NAME + '-azure-sample-subnet'
 
 # VM
-OS_DISK_NAME = 'azure-sample-osdisk'
+OS_DISK_NAME = VM_NAME + '-azure-sample-osdisk'
 STORAGE_ACCOUNT_NAME = haikunator.haikunate(delimiter='')
+IP_CONFIG_NAME = VM_NAME + '-azure-sample-ip-config'
+NIC_NAME = VM_NAME + "-nic"
 
-IP_CONFIG_NAME = 'azure-sample-ip-config'
 USERNAME = username
 PASSWORD = password
-VM_NAME = 'Vm-' + name_os
-NIC_NAME = VM_NAME + "-nic"
 
 VM_REFERENCE = {
     "debian": {

@@ -27,8 +27,8 @@ un compte ayant le droit de créer la VM qu'il veux :
 	username => boss
 	password => boss
 
-Une seule machine virtuelle peut être lancé à la fois.
-Le comportement normal n'est pas assuré si une autre machine virtuelle existe.
+Autant de machine que vous voulez peuvent être lancé à la fois.
+Le comportement normal n'est pas assuré si une autre machine virtuelle porte le nom d'une machine virtuelle déjà existante
 Le temps d'installation des package est de 1 à 3 minutes.
 Le temps de création de la VM dépend entièrement de la connexion internet et du site d'Azure
 temps estimé entre 7 minutes et 15 minutes.

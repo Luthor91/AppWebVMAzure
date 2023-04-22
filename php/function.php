@@ -14,6 +14,38 @@
 	}
 
 	/**
+	 * isValidVMname
+	 *	: Permet de savoir si le nom de la machine virtuelle est valide
+	* 
+	* @param  string $name nom de la machine virtuelle
+	* @return bool code retour 
+	*/
+	function isValidVMname(String $vm_name): bool {
+		// Vérifie que le nom ne dépasse pas la longueur maximale autorisée
+		if (strlen($vm_name) > 64) {
+			return false;
+		}
+
+		// Vérifie que le nom ne contient que des caractères autorisés
+		if (!preg_match('/^[a-zA-Z0-9_-]*$/', $vm_name)) {
+			return false;
+		}
+
+		// Vérifie que le nom ne commence ni ne se termine par un trait d'union
+		if (substr($vm_name, 0, 1) == '-' || substr($vm_name, -1) == '-') {
+			return false;
+		}
+		
+		// Vérifie que le nom ne contienne pas des mots interdits  
+		$reservedWords = ['windows'];
+		if (in_array(strtolower($vm_name), $reservedWords)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * setConfigFile
 	 *	: Permet d'insérer des données JSON dans un fichier
 	* 
@@ -32,7 +64,7 @@
 	 *	: Permet de récupérer des données JSON d'un fichier
 	* 
 	* @param  string $nameFile nom du fichier
-	* @return Array code retour 
+	* @return Array Données du fichier
 	*/
 	function getConfigFile(String $nameFile) : Array {
 		$configFilePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . $nameFile.'.json';
@@ -48,7 +80,8 @@
 					'startTimer' => 'conn',
 					'defaultOS' => 'debian',
 					'defaultRegion' => 'westeurope',
-					'ip_address' => 'ip_address'
+					'ip_address' => 'ip_address',
+					'name_virtual_machine' => 'VMname'
 				);
 			}
 		} elseif($nameFile == 'azure') {
@@ -62,6 +95,29 @@
 			}
 		}
 		return $array;
+	}
+
+	/**
+	 * updateConfigFile
+	 *	: Permet de mettre à jour des données JSON d'un fichier
+	* 
+	* @param  string $nameFile nom du fichier
+	* @param  array $vals valeurs à mettre à jour
+	* @return bool code retour 
+	*/
+	function updateConfigFile(String $nameFile, Array $vals) : bool {
+		$configFilePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . $nameFile.'.json';
+		if(!file_exists($configFilePath)){
+			file_put_contents($configFilePath, array(''));
+		}
+		$data = file_get_contents($configFilePath);
+		$array = json_decode($data, true);
+		foreach ($vals as $key => $value) {
+			$array[$key] = $value;
+		}
+		$array = json_encode($array);
+		$res = file_put_contents($configFilePath, $array);
+		return $res;
 	}
 
 	/**

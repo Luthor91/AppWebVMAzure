@@ -30,9 +30,12 @@
 	}
 	
 	$jsonArray = getConfigFile('config');
-	$arrToSend = array();
 	$os = getOS();
 
+	$name_virtual_machine =  $jsonArray['name_virtual_machine'];
+	$username = $jsonArray['username'];
+	$password = $jsonArray['password'];
+	$ip_address =  $jsonArray['ip_address'];
 
 
 	
@@ -48,63 +51,71 @@
 
 
 		<?php
+			/**
+			 *  Définition des divers chemins utilisés
+			 * 
+			 */
+			$pathToMain =  __DIR__ . DIRECTORY_SEPARATOR . '..';
+			$pathToVenv = $pathToMain . DIRECTORY_SEPARATOR . "scripts". DIRECTORY_SEPARATOR . "vmazureenv";
+			$pathToRequire = $pathToMain . DIRECTORY_SEPARATOR . "resources". DIRECTORY_SEPARATOR . "requirements.txt";
+			/**
+			 * Si le script scripts/createVM.py a été exécuté 
+			 * ou si le formulaire d'envoie de donnée depuis php/defaultVM ou php/selectVM a été validé
+			 */
 
-		/**
-		 * Si le script scripts/createVM.py a été exécuté 
-		 * ou si le formulaire d'envoie de donnée depuis php/defaultVM ou php/selectVM a été validé
-		 */
-			if(isset($_POST['form']) || isset($_POST['execute'])) {
-				
-				/**
-				 *  Définition des divers chemins utilisés
-				 * 
-				 */
-				$pathToMain =  __DIR__ . DIRECTORY_SEPARATOR . '..';
-				$pathToVenv = $pathToMain . DIRECTORY_SEPARATOR . "scripts". DIRECTORY_SEPARATOR . "vmazureenv";
-				$pathToRequire = $pathToMain . DIRECTORY_SEPARATOR . "resources". DIRECTORY_SEPARATOR . "requirements.txt";
-				
+			if(isset($_POST['form'])) {
+
 				if(isset($_POST['password'])){
-
-					$jsonArray['password'] = $_POST['password'];
+					updateConfigFile('config', array('password' => $_POST['password']));
+					$password =  $_POST['password'];
 				}
 				if(isset($_POST['username'])){
-
-					$jsonArray['username'] = $_POST['username'];
+					updateConfigFile('config', array('username' => $_POST['username']));
 				}
+				
+				if(!isset($_POST['name_virtual_machine']) || !isValidVMname($_POST['name_virtual_machine']) ) {
 
+					updateConfigFile('config', array('name_virtual_machine' => 'VmName'));
+				} else {
+					updateConfigFile('config', array('name_virtual_machine' => $_POST['name_virtual_machine']));
 
-				if(!str_starts_with($jsonArray['defaultOS'], 'w')){
-					/**
-					 * Si la machine virtuelle sélectionné est une Linux
-					 * 
-					 */
-					echo "<p>
-							Vous avez une machine virtuelle Linux<br>
-							Lancez un terminal et utilisez la commande suivante :<br>
-							ssh $jsonArray[username]@$jsonArray[ip_address] -p 22<br>
-							mot de passe a entrer apres : $jsonArray[password]<br>
-						</p>";
-				} else{
-					/**
-					* Si la machine virtuelle sélectionné est une Linux
-					* 
-					*/
-					echo "<p>
-							Vous avez une machine virtuelle Windows
-							Lancez un terminal et utilisez la commande suivante :<br>
-							rdesktop $jsonArray[ip_address] -u $jsonArray[username] -p $jsonArray[password]
-						</p>";
 				}
-				echo "<p>
-						<br><br>Si l'adresse IP ne s'est pas correctement affichee,<br> 
-						regardez dans le terminal qui a ete execute par l'application <br>
-						Sinon regardez sur le Portail Azure<br>
-						Attendez qu'un terminal soit ouvert par l'application pour continuer<br>
-						<br>
-						Temps estime : 7 minutes.<br><br>
-						</p>";
 
 			}
+
+			if(!str_starts_with($jsonArray['defaultOS'], 'w')){
+				/**
+				 * Si la machine virtuelle sélectionné est une Linux
+				 * 
+				 */
+				echo "<p>
+						Vous avez une machine virtuelle Linux<br>
+						Nom de la machine : $name_virtual_machine<br>
+						Lancez un terminal et utilisez la commande suivante :<br>
+						ssh $username]@$ip_address -p 22<br>
+						mot de passe a entrer apres : $password<br>
+					</p>";
+			} else{
+				/**
+				* Si la machine virtuelle sélectionné est une Windows
+				* 
+				*/
+				echo "<p>
+						Vous avez une machine virtuelle Windows<br>
+						Nom de la machine : $name_virtual_machine<br>
+						Lancez un terminal et utilisez la commande suivante :<br>
+						rdesktop $ip_address -u $username -p $password
+					</p>";
+			}
+			echo "<p>
+					<br><br>Si l'adresse IP ne s'est pas correctement affichee,<br> 
+					regardez dans le terminal qui a ete execute par l'application <br>
+					Sinon regardez sur le Portail Azure<br>
+					Attendez qu'un terminal soit ouvert par l'application pour continuer<br>
+					<br>
+					Temps estime : 7 minutes.<br><br>
+					</p>";
+
 
 			/**
 			* Si le bouton d'exécution du script scripts/createVM.py a été clické

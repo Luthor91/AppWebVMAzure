@@ -29,12 +29,22 @@
 	<body>	
 		<legend>VM par defaut</legend>
 		<p> 
-			OS selectionne : 
 			<?php
 				/**
 				 * 	Gestion des erreurs à revoir
 				 * 
 				 */
+
+				 echo "Nom Machine Virtuelle : ";
+
+				if(isset($jsonArray['name_virtual_machine'])){
+					echo $jsonArray['name_virtual_machine'];
+					$arrToSend['name_virtual_machine'] = $jsonArray['name_virtual_machine'];
+				} else {
+					echo "Erreur";
+				}	
+
+				echo "<BR>OS selectionne : ";
 
 				if(isset($jsonArray['defaultOS'])){
 					echo $jsonArray['defaultOS'];

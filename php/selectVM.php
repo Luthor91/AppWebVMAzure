@@ -35,14 +35,16 @@
 		<form action="createVM.php" method="post">
 			<legend>Selection de la VM</legend>
 			<p> 
-				<BR>Selection de l'OS <BR>
+				<BR>Selection du nom de la machine <BR>
+				<input type="text" name="name_virtual_machine" />	
+				<BR><BR>Selection de l'OS <BR>
 				<select name="defaultOS" id="defaultOS-select">
 					<option value="debian">Debian</option>
 					<option value="ubuntu">Ubuntu</option>
 					<option value="windowsDesktop">Windows 10</option>
 					<option value="windowsServer">Windows Server</option>
 				</select>
-				<BR>Selection de la region <BR>
+				<BR><BR>Selection de la region <BR>
 				<select name="defaultRegion" id="defaultRegion-select">
 					<option value="westeurope">Europe Ouest</option>
 					<option value="northeurope">Europe Nord</option>
@@ -53,24 +55,29 @@
 					<option value="southcentralus">USA Sud</option>
 					<option value="usa">USA</option>
 				</select>
-				<BR>Avec Interface Graphique (Aucune Incidence sur la suite, WIP)<BR>
+				<BR><BR>Avec Interface Graphique (Aucune Incidence sur la suite, WIP)<BR>
 				<select name="interface" id="defaultInterface-select">
 					<option value="no">Non</option>
 					<option value="yes">Oui</option>
 				</select>
-				<BR> Nom d'utilisateur : <BR>
+				<BR><BR> Nom d'utilisateur : <BR>
 				<?php
 					$arrToSend['username'] = generateRandomUsername();
 					echo "<input type=hidden name=username value=$arrToSend[username]>";
 					echo $arrToSend['username'];
 				?>
-				<BR> Mot de passe : <BR>
+				<BR><BR> Mot de passe : <BR>
 				<?php
 					$arrToSend['password'] = generateRandompassword();
 					echo "<input type=hidden name=password value=$arrToSend[password]>";
 					echo $arrToSend['password'];
+
+					echo "<input type=hidden name=username value=$arrToSend[username] />";
+					echo "<input type=hidden name=password value=$arrToSend[password] />";
 				?>
 			</p>
+			
+			
 			<input type="submit" name="form" value="Envoyer" />	
 		</form>
 		<BR><BR>
