@@ -79,7 +79,7 @@
 			<p> 
 				Selection de l'OS par defaut
 				<BR>
-				<select name="defaultOS" id="defaultOS-select">
+				<select name="operating_system" id="operating_system-select">
 					<option value="debian">debian</option>
 					<option value="debianDesktop">Debian Desktop</option>
 					<option value="ubuntu">Ubuntu Server</option>
@@ -91,18 +91,56 @@
 			<p> 
 				Selection de la region par defaut
 				<BR>
-				<select name="defaultRegion" id="defaultRegion-select">
-					<option value="northeurope">Europe du Nord</option>
-					<option value="westeurope">Europe de l'Ouest</option>
-					<option value="uksouth">Royaume-Uni Sud</option>
+				<select name="location" id="location-select">
+					<option disabled>─────Europe─────</option>
 					<option value="francecentral">France Centrale</option>
-					<option value="westcentralus">Allemagne Ouest Central</option>
-					<option value="eastus">Est des Etats-Unis</option>
-					<option value="centralus">Centre des Etats-Unis</option>
-					<option value="westus">Ouest des Etats-Unis</option>
+					<option value="westeurope">Europe de l'Ouest</option>
+					<option value="northeurope">Europe du Nord</option>
+					<option value="germanywestcentral">Allemagne Nord Ouest</option>
+					<option value="switzerlandnorth">Suisse Nord</option>
+					<option value="uksouth">Royaume-Uni Sud</option>
+					<option value="ukwest">Royaume-Uni Est</option>
+					<option value="norwayeast">Norvège Est</option>
+					<option value="swedencentral">Suède Centre</option>
+					<option value="polandcentral">Pologne Centre</option>
+
+					<option disabled>────Amerique──────</option>
+					<option value="eastus">USA Est 1</option>
+					<option value="eastus2">USA Est 2</option>
+					<option value="centralus">USA Centre</option>
+					<option value="westcentralus">USA Ouest Central</option>
+					<option value="westus">USA Ouest 1</option>
+					<option value="westus2">USA Ouest 2</option>
+					<option value="westus3">USA Ouest 3</option>
+					<option value="northcentralus">USA Nord</option>
+					<option value="southcentralus">USA Sud</option>
 					<option value="canadacentral">Canada Central</option>
 					<option value="canadaeast">Canada Est</option>
+
+					<option disabled>────Asie─────</option>
+					<option value="southeastasia">Asie Sud-Est</option>
+					<option value="eastasia">Asie Est</option>
+					<option value="centralindia">Inde Centre</option>
+					<option value="southindia">Inde Sud</option>
+					<option value="westindia">Inde Ouest</option>
+					<option value="jioindiawest">Jio Inde Ouest ?</option>
 					<option value="brazilsouth">Bresil Sud</option>
+					<option value="koreacentral">Corée Centre</option>
+					<option value="koreasouth">Corée Sud</option>
+					<option value="japaneast">Japon Est</option>
+					<option value="japanwest">Japon Ouest</option>
+
+					<option disabled>────Moyen Orient─────</option>
+					<option value="uaenorth">Etat Arabes Unis Nord</option>
+					<option value="australiacentral">Australie Centre</option>
+					<option value="qatarcentral">Qatar Centre</option>
+					
+					<option disabled>────Oceanie─────</option>
+					<option value="australiaeast">Australie Est</option>
+					<option value="australiasoutheast">Australie Sud-Est</option>
+
+					<option disabled>────Afrique─────</option>
+					<option value="southafricanorth">Sud Afrique Nord</option>
 				</select>
 			</p>
 			<legend>Connexion Azure</legend>
@@ -155,6 +193,9 @@
 		}
 		*/
 		foreach($jsonConfig as $key => $value) {
+			if(empty($_POST[$key])){
+				continue;
+			}
 			if ($key == 'TimerDuration' && is_numeric($value) && $value > 0) {
 				$jsonConfig[$key] = $_POST[$key];
 			} else {
@@ -162,6 +203,9 @@
 			}
 		}
 		foreach($jsonAzure as $key => $value) {
+			if(empty($_POST[$key])){
+				continue;
+			}
 			$jsonAzure[$key] = $_POST[$key];
 		}
 		

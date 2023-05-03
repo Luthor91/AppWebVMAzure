@@ -12,7 +12,7 @@
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
-
+	
 	/**
 	 * isValidVMname
 	 *	: Permet de savoir si le nom de la machine virtuelle est valide
@@ -78,8 +78,8 @@
 				$array = array(
 					'TimerDuration' => '10',
 					'startTimer' => 'conn',
-					'defaultOS' => 'debian',
-					'defaultRegion' => 'westeurope',
+					'operating_system' => 'debian',
+					'location' => 'westeurope',
 					'ip_address' => 'ip_address',
 					'name_virtual_machine' => 'VMname'
 				);
@@ -236,7 +236,7 @@
 		$lowercase_chars = 'abcdefghijklmnopqrstuvwxyz';
 		$uppercase_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$number_chars = '0123456789';
-		$symbol_chars = '!@#$%^&*()_+-={}[];\',./?';
+		$symbol_chars = '!@#$%^*()_+-={}[];\',./?';
 
 		// Initialisation de la chaîne de caractères pouvant être utilisés pour générer le mot de passe
 		$chars = $lowercase_chars;
