@@ -299,3 +299,397 @@ All example operations completed successfully!
 2023-04-22 18:24:23 > Starting Application
 2023-04-22 19:02:46 > Starting Application
 2023-04-22 19:05:10 > Starting Application
+2023-04-23 21:32:43 > Starting Application
+2023-04-23 21:32:43 > Create Resource Group
+2023-04-23 21:32:44 > Create Vnet
+2023-04-23 21:32:48 > Create Subnet
+2023-04-23 21:32:52 > Create NIC
+2023-04-23 21:33:23 > Creating ubuntu Virtual Machine
+2023-04-23 21:34:11 > Adding Tag Virtual Machine
+2023-04-23 21:34:42 > Create empty managed Data Disk
+2023-04-23 21:34:44 > Get Virtual Machine by Name
+2023-04-23 21:34:45 > Attach Data Disk
+2023-04-23 21:35:16 > Create Public IP Address
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 138, in createVM
+    ip_address = create_public_ip(network_client, compute_client)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 299, in create_public_ip
+    async_public_ip_creation = network_client.public_ip_addresses.create_or_update(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\network\v2018_12_01\operations\public_ip_addresses_operations.py", line 268, in create_or_update
+    raw_result = self._create_or_update_initial(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\network\v2018_12_01\operations\public_ip_addresses_operations.py", line 228, in _create_or_update_initial
+    raise exp
+msrestazure.azure_exceptions.CloudError: Azure Error: PublicIPCountLimitReached
+Message: Cannot create more than 3 public IP addresses for this subscription in this region.
+
+2023-04-23 21:35:19 > Delete Resource Group
+2023-04-23 21:38:23 > Deleted: premiereVM-azure-sample-group-virtual-machines
+2023-04-23 21:41:47 > Starting Application
+2023-04-23 21:41:47 > Create Resource Group
+2023-04-23 21:41:49 > Create Vnet
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 390, in run
+    self._poll()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 426, in _poll
+    self._operation.parse_resource(self._response)
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 286, in parse_resource
+    self._raise_if_bad_http_status_and_method(response)
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 139, in _raise_if_bad_http_status_and_method
+    raise BadStatus(
+msrestazure.polling.arm_polling.BadStatus: Invalid return status for 'PUT' operation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 62, in createVM
+    nic = create_nic(network_client)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 233, in create_nic
+    result = async_vnet_creation.result()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 183, in result
+    self.wait(timeout)
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 201, in wait
+    raise self._exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 152, in _start
+    self._polling_method.run()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 393, in run
+    raise CloudError(self._response)
+msrestazure.azure_exceptions.CloudError: Azure Error: ResourceNotFound
+Message: The Resource 'Microsoft.Network/virtualNetworks/premiereVM-azure-sample-vnet' under resource group 'premiereVM-azure-sample-group-virtual-machines' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+
+2023-04-23 21:41:55 > Delete Resource Group
+2023-04-23 21:44:02 > Deleted: premiereVM-azure-sample-group-virtual-machines
+2023-04-23 22:28:00 > Starting Application
+2023-04-23 22:28:00 > Create Resource Group
+2023-04-23 22:28:01 > Create Vnet
+2023-04-23 22:28:06 > Create Subnet
+2023-04-23 22:28:10 > Create NIC
+2023-04-23 22:28:41 > Creating debian Virtual Machine
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 390, in run
+    self._poll()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 418, in _poll
+    raise OperationFailed("Operation failed or cancelled")
+msrestazure.polling.arm_polling.OperationFailed: Operation failed or cancelled
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 76, in createVM
+    async_vm_creation.wait()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 201, in wait
+    raise self._exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 152, in _start
+    self._polling_method.run()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 400, in run
+    raise CloudError(self._response)
+msrestazure.azure_exceptions.CloudError: Azure Error: OperationPreempted
+Message: Operation execution has been preempted by a more recent operation.
+
+2023-04-23 22:29:28 > Delete Resource Group
+2023-04-23 22:32:01 > Deleted: deuxiemevm-azure-sample-group-virtual-machines
+2023-04-24 11:02:00 > Starting Application
+2023-04-24 11:02:01 > Create Resource Group
+2023-04-24 11:02:01 > Create Vnet
+2023-04-24 11:02:06 > Create Subnet
+2023-04-24 11:02:10 > Create NIC
+2023-04-24 11:02:42 > Creating debian Virtual Machine
+2023-04-24 11:03:29 > Adding Tag Virtual Machine
+2023-04-24 11:04:00 > Create empty managed Data Disk
+2023-04-24 11:04:03 > Get Virtual Machine by Name
+2023-04-24 11:04:03 > Attach Data Disk
+2023-04-24 11:04:34 > Create Public IP Address
+2023-04-24 11:04:37 > Create IP Address
+2023-04-24 11:04:41 > Update IP Address
+2023-04-24 11:05:22 > Public ip address : deuxiemetestvm is 20.13.56.194
+2023-04-24 11:05:22 > Create Port 22 conn
+2023-04-24 11:06:05 > Start VM debian Virtual Machine
+2023-04-24 11:06:15 > Start terminal on OS : Windows
+2023-04-24 11:06:15 > Waiting 10.0 minutes before deleting
+2023-04-24 11:16:15 > Stop VM
+2023-04-24 11:16:46 > Delete VM
+2023-04-24 11:16:46 > Delete Resource Group
+2023-04-24 11:25:27 > Starting Application
+2023-04-24 11:25:27 > Create Resource Group
+2023-04-24 11:25:27 > Create Vnet
+2023-04-24 11:25:33 > Create Subnet
+2023-04-24 11:25:36 > Create NIC
+2023-04-24 11:26:07 > Creating debian Virtual Machine
+2023-04-24 11:26:55 > Adding Tag Virtual Machine
+2023-04-24 11:27:27 > Create empty managed Data Disk
+2023-04-24 11:27:30 > Get Virtual Machine by Name
+2023-04-24 11:27:30 > Attach Data Disk
+2023-04-24 11:28:01 > Create Public IP Address
+2023-04-24 11:28:03 > Create IP Address
+2023-04-24 11:28:08 > Update IP Address
+2023-04-24 11:28:49 > Public ip address : testsitephp1 is 20.82.84.21
+2023-04-24 11:28:49 > Create Port 22 conn
+2023-04-24 11:29:32 > Start VM debian Virtual Machine
+2023-04-24 11:29:42 > Start terminal on OS : Windows
+2023-04-24 11:29:42 > Waiting 10.0 minutes before deleting
+2023-04-24 11:39:42 > Stop VM
+2023-04-24 11:40:13 > Delete VM
+2023-04-24 11:40:13 > Delete Resource Group
+2023-04-24 12:07:08 > Create Resource Group
+2023-04-24 12:07:09 > Create Vnet
+2023-04-24 12:07:13 > Create Subnet
+2023-04-24 12:07:17 > Create NIC
+2023-04-24 12:07:48 > Creating ubuntu Virtual Machine
+2023-04-24 12:08:36 > Adding Tag Virtual Machine
+2023-04-24 12:09:07 > Create empty managed Data Disk
+2023-04-24 12:09:10 > Get Virtual Machine by Name
+2023-04-24 12:09:10 > Attach Data Disk
+2023-04-24 12:09:41 > Create Public IP Address
+2023-04-24 12:09:43 > Create IP Address
+2023-04-24 12:09:48 > Update IP Address
+2023-04-24 12:10:29 > Public ip address : testvmsitephp2 is 51.124.1.127
+2023-04-24 12:10:29 > Create Port 22 conn
+2023-04-24 12:11:12 > Start VM ubuntu Virtual Machine
+2023-04-24 12:11:23 > Start terminal on OS : Windows
+2023-04-24 12:11:23 > Waiting 10.0 minutes before deleting
+2023-04-24 12:21:23 > Stop VM
+2023-04-24 12:21:53 > Delete VM
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 209, in createVM
+    delete_virtual_machine()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 237, in delete_virtual_machine
+    resource_client.resources.delete_by_id(resource.id, '2023-03-01')
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\resource\resources\v2018_05_01\operations\resources_operations.py", line 1020, in delete_by_id
+    raw_result = self._delete_by_id_initial(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\resource\resources\v2018_05_01\operations\resources_operations.py", line 993, in _delete_by_id_initial
+    raise exp
+msrestazure.azure_exceptions.CloudError: Azure Error: NoRegisteredProviderFound
+Message: No registered resource provider found for location 'westeurope' and API version '2023-03-01' for type 'disks'. The supported api-versions are '2016-04-30-preview, 2017-03-30, 2018-04-01, 2018-06-01, 2018-09-30, 2019-03-01, 2019-07-01, 2019-11-01, 2020-05-01, 2020-06-30, 2020-09-30, 2020-12-01, 2021-04-01, 2021-08-01, 2021-12-01, 2022-03-02, 2022-07-02, 2023-01-02'. The supported locations are 'southeastasia, eastus2, centralus, westeurope, eastus, northcentralus, southcentralus, westus, northeurope, eastasia, brazilsouth, westus2, westcentralus, ukwest, uksouth, japaneast, japanwest, canadacentral, canadaeast, centralindia, southindia, australiaeast, australiasoutheast, koreacentral, koreasouth, westindia, francecentral, southafricanorth, uaenorth, australiacentral, switzerlandnorth, germanywestcentral, norwayeast, jioindiawest, westus3, swedencentral, qatarcentral, polandcentral'.
+
+2023-04-24 12:21:54 > Delete Resource Group
+2023-04-24 12:52:11 > Create Resource Group
+2023-04-24 12:52:12 > Create Vnet
+2023-04-24 12:52:16 > Create Subnet
+2023-04-24 12:52:20 > Create NIC
+2023-04-24 12:52:50 > Creating debian Virtual Machine
+2023-04-24 12:53:37 > Adding Tag Virtual Machine
+2023-04-24 12:54:08 > Create empty managed Data Disk
+2023-04-24 12:54:11 > Get Virtual Machine by Name
+2023-04-24 12:54:11 > Attach Data Disk
+2023-04-24 12:54:42 > Create Public IP Address
+2023-04-24 12:54:45 > Create IP Address
+2023-04-24 12:54:50 > Update IP Address
+2023-04-24 12:55:31 > Public ip address : vmphp4 is 20.73.118.135
+2023-04-24 12:55:31 > Create Port 22 conn
+2023-04-24 12:56:14 > Start VM debian Virtual Machine
+2023-04-24 12:56:25 > Start terminal on OS : Windows
+2023-04-24 12:56:25 > Waiting 10.0 minutes before deleting
+2023-04-24 13:06:25 > Stop VM
+2023-04-24 13:06:55 > Delete VM
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 209, in createVM
+    delete_virtual_machine()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 237, in delete_virtual_machine
+    resource_client.resources.delete_by_id(resource.id, '2023-03-01')
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\resource\resources\v2018_05_01\operations\resources_operations.py", line 1020, in delete_by_id
+    raw_result = self._delete_by_id_initial(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\resource\resources\v2018_05_01\operations\resources_operations.py", line 993, in _delete_by_id_initial
+    raise exp
+msrestazure.azure_exceptions.CloudError: Azure Error: NoRegisteredProviderFound
+Message: No registered resource provider found for location 'westeurope' and API version '2023-03-01' for type 'disks'. The supported api-versions are '2016-04-30-preview, 2017-03-30, 2018-04-01, 2018-06-01, 2018-09-30, 2019-03-01, 2019-07-01, 2019-11-01, 2020-05-01, 2020-06-30, 2020-09-30, 2020-12-01, 2021-04-01, 2021-08-01, 2021-12-01, 2022-03-02, 2022-07-02, 2023-01-02'. The supported locations are 'southeastasia, eastus2, centralus, westeurope, eastus, northcentralus, southcentralus, westus, northeurope, eastasia, brazilsouth, westus2, westcentralus, ukwest, uksouth, japaneast, japanwest, canadacentral, canadaeast, centralindia, southindia, australiaeast, australiasoutheast, koreacentral, koreasouth, westindia, francecentral, southafricanorth, uaenorth, australiacentral, switzerlandnorth, germanywestcentral, norwayeast, jioindiawest, westus3, swedencentral, qatarcentral, polandcentral'.
+
+2023-04-24 13:06:56 > Delete Resource Group
+2023-04-24 14:56:52 > Create Resource Group
+2023-04-24 14:56:52 > Create Vnet
+2023-04-24 14:56:57 > Create Subnet
+2023-04-24 14:57:00 > Create NIC
+2023-04-24 14:57:32 > Creating debian Virtual Machine
+2023-04-24 14:57:43 > Adding Tag Virtual Machine
+2023-04-24 14:58:14 > Create empty managed Data Disk
+2023-04-24 14:58:17 > Get Virtual Machine by Name
+2023-04-24 14:58:17 > Attach Data Disk
+2023-04-24 14:58:48 > Create Public IP Address
+2023-04-24 14:58:50 > Create IP Address
+2023-04-24 14:58:54 > Update IP Address
+2023-04-24 14:59:52 > Public ip address : vmtestphp1 is 4.231.83.37
+2023-04-24 14:59:52 > Create Port 22 conn
+2023-04-24 15:00:48 > Start VM debian Virtual Machine
+2023-04-24 15:00:59 > Start terminal on OS : Windows
+2023-04-24 15:00:59 > Waiting 10.0 minutes before deleting
+2023-04-24 15:10:59 > Stop VM
+2023-04-24 15:11:29 > Delete VM
+2023-04-24 15:11:30 > Delete Resource Group
+2023-04-24 15:22:31 > Create Resource Group
+2023-04-24 15:22:31 > Create Vnet
+2023-04-24 15:22:36 > Create Subnet
+2023-04-24 15:22:40 > Create NIC
+2023-04-24 15:23:11 > Creating debian Virtual Machine
+2023-04-24 15:24:07 > Adding Tag Virtual Machine
+2023-04-24 15:24:38 > Create empty managed Data Disk
+2023-04-24 15:24:41 > Get Virtual Machine by Name
+2023-04-24 15:24:41 > Attach Data Disk
+2023-04-24 15:25:12 > Create Public IP Address
+2023-04-24 15:25:14 > Create IP Address
+2023-04-24 15:25:19 > Update IP Address
+2023-04-24 15:26:00 > Public ip address : vmtestphp1 is 20.76.251.237
+2023-04-24 15:26:00 > Create Port 22 conn
+2023-04-24 15:26:43 > Start VM debian Virtual Machine
+2023-04-24 15:26:53 > Start terminal on OS : Windows
+2023-04-24 15:26:53 > Waiting 2.0 minutes before deleting
+2023-04-24 15:28:53 > Stop VM
+2023-04-24 15:29:24 > Delete VM
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 215, in createVM
+    delete_virtual_machine()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 243, in delete_virtual_machine
+    resource_client.resources.delete_by_id(resource.id, api_version)
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\resource\resources\v2018_05_01\operations\resources_operations.py", line 1020, in delete_by_id
+    raw_result = self._delete_by_id_initial(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\resource\resources\v2018_05_01\operations\resources_operations.py", line 993, in _delete_by_id_initial
+    raise exp
+msrestazure.azure_exceptions.CloudError: Azure Error: NoRegisteredProviderFound
+Message: No registered resource provider found for location 'westeurope' and API version '2023-03-01' for type 'disks'. The supported api-versions are '2016-04-30-preview, 2017-03-30, 2018-04-01, 2018-06-01, 2018-09-30, 2019-03-01, 2019-07-01, 2019-11-01, 2020-05-01, 2020-06-30, 2020-09-30, 2020-12-01, 2021-04-01, 2021-08-01, 2021-12-01, 2022-03-02, 2022-07-02, 2023-01-02'. The supported locations are 'southeastasia, eastus2, centralus, westeurope, eastus, northcentralus, southcentralus, westus, northeurope, eastasia, brazilsouth, westus2, westcentralus, ukwest, uksouth, japaneast, japanwest, canadacentral, canadaeast, centralindia, southindia, australiaeast, australiasoutheast, koreacentral, koreasouth, westindia, francecentral, southafricanorth, uaenorth, australiacentral, switzerlandnorth, germanywestcentral, norwayeast, jioindiawest, westus3, swedencentral, qatarcentral, polandcentral'.
+
+2023-04-24 15:29:25 > Delete Resource Group
+2023-04-25 11:39:32 > Create Resource Group
+Groupe de ressource : True
+2023-04-25 11:39:32 > Create Vnet
+2023-04-25 11:39:40 > Create Subnet
+2023-04-25 11:39:43 > Create NIC
+2023-04-25 11:40:17 > Creating windowsDesktop Virtual Machine
+2023-04-25 11:43:34 > Adding Tag Virtual Machine
+2023-04-25 11:44:07 > Create empty managed Data Disk
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 117, in createVM
+    async_disk_creation = compute_client.disks.create_or_update(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\compute\v2018_09_30\operations\disks_operations.py", line 121, in create_or_update
+    raw_result = self._create_or_update_initial(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\azure\mgmt\compute\v2018_09_30\operations\disks_operations.py", line 79, in _create_or_update_initial
+    raise exp
+msrestazure.azure_exceptions.CloudError: Azure Error: InvalidResourceLocation
+Message: The resource 'mydatadisk1' already exists in location 'westus' in resource group 'group-appwebpython'. A resource with the same name cannot be created in location 'francecentral'. Please select a new resource name.
+
+2023-04-25 11:44:08 > Delete Resource Group
+2023-04-25 13:30:41 > Create Resource Group
+Groupe de ressource : True
+2023-04-25 13:30:41 > Create Vnet
+2023-04-25 13:30:45 > Create Subnet
+A VM operation failed:
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 390, in run
+    self._poll()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 418, in _poll
+    raise OperationFailed("Operation failed or cancelled")
+msrestazure.polling.arm_polling.OperationFailed: Operation failed or cancelled
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 82, in createVM
+    nic = create_nic(network_client)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\php\../scripts/createVM.py", line 309, in create_nic
+    subnet_info = async_subnet_creation.result()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 183, in result
+    self.wait(timeout)
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 201, in wait
+    raise self._exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrest\polling\poller.py", line 152, in _start
+    self._polling_method.run()
+  File "C:\Users\Killi\OneDrive\Documents\Cours\SupDeVinci\Cloud\appWebAzurePython\scripts\vmazureenv\Lib\site-packages\msrestazure\polling\arm_polling.py", line 400, in run
+    raise CloudError(self._response)
+msrestazure.azure_exceptions.CloudError: Azure Error: Canceled
+Message: Operation was canceled.
+Exception Details:
+	Error Code: CanceledAndSupersededDueToAnotherOperation
+	Message: Operation PutSubnetOperation (753210b1-20ec-41cf-994d-6f541ad87322) was canceled and superseded by operation PutVirtualNetworkOperation (f60470dd-7039-4aa4-8ed2-13caa7da025d).
+
+2023-04-25 13:30:48 > Delete Resource Group
+2023-04-26 22:11:00 > Create Resource Group
+Groupe de ressource : True
+2023-04-26 22:11:00 > Create Vnet
+2023-04-26 22:11:11 > Create Subnet
+2023-04-26 22:11:21 > Create NIC
+2023-04-26 22:11:22 > Creating debian Virtual Machine
+2023-04-26 22:11:39 > Adding Tag Virtual Machine
+2023-04-26 22:11:39 > Create empty managed Data Disk
+2023-04-26 22:11:50 > Get Virtual Machine by Name
+2023-04-26 22:11:50 > Attach Data Disk
+2023-04-26 22:12:20 > Create Public IP Address
+2023-04-26 22:12:22 > Create IP Address
+2023-04-26 22:12:27 > Update IP Address
+2023-04-26 22:13:19 > Public ip address : vmtestphp1 is 20.111.52.56
+2023-04-26 22:13:19 > Create Port 22 conn
+2023-04-26 22:13:45 > Start VM debian Virtual Machine
+2023-04-26 22:13:55 > Start terminal on OS : Windows
+2023-04-26 22:13:55 > Waiting 1.0 minutes before deleting
+2023-04-26 22:14:55 > Stop VM
+2023-04-26 22:15:25 > Delete Network Interface
+Detaching NIC vmtestphp1-nic from VM vmtestphp1
+Subnet reference is required for NIC vmtestphp1-nic. Skipping deletion.
+All network interfaces deleted successfully for VM vmtestphp1
+2023-04-26 22:15:27 > Delete VM
+Queued disks will be deleted now...
+Deleted VM vmtestphp1
+2023-04-26 22:16:03 > Delete Virtual Network
+All virtual networks deleted successfully.
+2023-04-26 22:16:04 > Delete Subnet
+All subnets deleted successfully.
+2023-04-26 22:16:05 > Detach Public IP
+2023-04-26 22:16:05 > Detach Network Security Group
+No network interfaces found for Network Security Group 'nsg-vmtestphp1'
+2023-04-26 22:16:06 > Delete Public IP
+Public IP address 'ip-vmtestphp1' deleted
+2023-04-26 22:16:37 > Delete Network Security Group
+Le Groupe de sécurité réseau nsg-vmtestphp1 a été supprimé.
+All example operations completed successfully!
+2023-04-26 22:16:48 > Delete Network Interface
+2023-04-26 22:16:48 > Delete VM
+2023-04-26 22:16:49 > Delete Virtual Network
+All virtual networks deleted successfully.
+2023-04-26 22:16:49 > Delete Subnet
+All subnets deleted successfully.
+2023-04-26 22:16:50 > Detach Public IP
+2023-04-26 22:16:50 > Detach Network Security Group
+Network Security Group 'nsg-vmtestphp1' not found
+2023-04-26 22:16:50 > Delete Public IP
+Public IP address 'ip-vmtestphp1' not found
+2023-04-26 22:16:51 > Delete Network Security Group
+2023-04-28 11:13:59 > Create Resource Group
+Groupe de ressource : False
+2023-04-28 11:14:00 > Create Vnet
+2023-04-28 11:14:11 > Create Subnet
+2023-04-28 11:14:22 > Create NIC
+2023-04-28 11:14:23 > Creating debian Virtual Machine
+2023-04-28 11:15:02 > Adding Tag Virtual Machine
+2023-04-28 11:15:02 > Create empty managed Data Disk
+2023-04-28 11:15:13 > Get Virtual Machine by Name
+2023-04-28 11:15:13 > Attach Data Disk
+2023-04-28 11:15:43 > Create Public IP Address
+2023-04-28 11:15:46 > Create IP Address
+2023-04-28 11:15:51 > Update IP Address
+2023-04-28 11:16:27 > Public ip address : debphp1 is 20.71.224.30
+2023-04-28 11:16:27 > Create Port 22 conn
+2023-04-28 11:16:34 > Start VM debian Virtual Machine
+2023-04-28 11:16:45 > Start terminal on OS : Windows
+2023-04-28 11:16:45 > Waiting 1.0 minutes before deleting
+2023-04-28 11:17:45 > Stop VM
+2023-04-28 11:18:15 > Stopping every service
+2023-04-28 11:18:18 > Detach Virtual Network
+2023-04-28 11:18:19 > Stopping every service
+2023-04-28 11:18:20 > Detach Virtual Network
