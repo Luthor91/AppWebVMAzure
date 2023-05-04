@@ -2,12 +2,11 @@
 #  Avertissements
 ###########################
 
-Cette version ne fonctionne pas
+Cette version ne fonctionne pas complètement
 Vous pouvez créer une machine virtuelle, voire plusieurs mais elle ne pourra pas être supprimé
 Le site en lui-même peut créer qu'une seule machine virtuelle.
 L'exécution du script Python permet de créer un nombre encore indéterminé de VM
 Les futures fonctionnalités seront :
-	-Suppression complète de la machine virtuelle et ses ressources et groupes
 	-Page web d'informations listant le contenue du groupe de ressource utilisé
 	-Possibilité de stopper, supprimer et redémarrer une VM
 	-Possibilité de créer plusieurs VM via site php
