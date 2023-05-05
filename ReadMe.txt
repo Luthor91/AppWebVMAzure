@@ -2,6 +2,8 @@
 #  Etat de l'application
 ###########################
 
+Cette application a été réalisé exclusivement en Python, php et html, l'utilisation de Javascript pour faciliter certaines choses n'a pas été pensé, j'essaye pour le moment de réaliser une application simple avec le moins de technologies possible.
+
 Pour le moment (05/05/2023) l'application est fonctionnelle, elle permet de créer puis supprimer une VM de notre choix, lister les VM et ses ressources (attaché ou non)
 
 ###########################
