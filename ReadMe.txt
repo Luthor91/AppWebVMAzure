@@ -3,7 +3,7 @@
 ###########################
 
 Cette version ne fonctionne pas complètement
-Vous pouvez créer une machine virtuelle, voire plusieurs mais elle ne pourra pas être supprimé
+Vous pouvez créer une machine virtuelle, voire plusieurs mais elle si une machine se supprime elle risque de suprimer les autres
 Le site en lui-même peut créer qu'une seule machine virtuelle.
 L'exécution du script Python permet de créer un nombre encore indéterminé de VM
 Les futures fonctionnalités seront :
