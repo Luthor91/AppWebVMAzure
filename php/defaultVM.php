@@ -46,18 +46,18 @@
 
 				echo "<BR>OS selectionne : ";
 
-				if(isset($jsonArray['defaultOS'])){
-					echo $jsonArray['defaultOS'];
-					$arrToSend['defaultOS'] = $jsonArray['defaultOS'];
+				if(isset($jsonArray['operating_system'])){
+					echo $jsonArray['operating_system'];
+					$arrToSend['operating_system'] = $jsonArray['operating_system'];
 				} else {
 					echo "Erreur";
 				}
 
 				echo "<BR>Region selectionnee : ";
 
-				if(isset($jsonArray['defaultRegion'])){
-					echo $jsonArray['defaultRegion'];
-					$arrToSend['defaultRegion'] = $jsonArray['defaultRegion'];
+				if(isset($jsonArray['location'])){
+					echo $jsonArray['location'];
+					$arrToSend['location'] = $jsonArray['location'];
 				} else {
 					echo "Erreur";
 				}

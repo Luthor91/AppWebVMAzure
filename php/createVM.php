@@ -29,14 +29,8 @@
 		$sudo = $_SESSION['sudo'];
 	}
 	
-	$jsonArray = getConfigFile('config');
+	$dataVirtualMachine = getConfigFile('config');
 	$os = getOS();
-
-	$name_virtual_machine =  $jsonArray['name_virtual_machine'];
-	$username = $jsonArray['username'];
-	$password = $jsonArray['password'];
-	$ip_address =  $jsonArray['ip_address'];
-
 
 	
 ?>
@@ -64,54 +58,44 @@
 			 */
 
 			if(isset($_POST['form'])) {
-
-				if(isset($_POST['password'])){
-					updateConfigFile('config', array('password' => $_POST['password']));
-					$password =  $_POST['password'];
-				}
-				if(isset($_POST['username'])){
-					updateConfigFile('config', array('username' => $_POST['username']));
-				}
-				
-				if(!isset($_POST['name_virtual_machine']) || !isValidVMname($_POST['name_virtual_machine']) ) {
-
-					updateConfigFile('config', array('name_virtual_machine' => 'VmName'));
-				} else {
-					updateConfigFile('config', array('name_virtual_machine' => $_POST['name_virtual_machine']));
-
+				foreach ($_POST as $key => $value) {
+					if($key == 'form') {
+						continue;
+					}
+					if($key == 'name_virtual_machine' && empty($value)){
+						$value = 'vmname';
+					}
+					updateConfigFile('config', array($key => $value));
+					$dataVirtualMachine[$key] = $value;
 				}
 
 			}
-
-			if(!str_starts_with($jsonArray['defaultOS'], 'w')){
+			echo"<p>
+			Caracteristique de la machine choisi :<br>";
+			foreach ($dataVirtualMachine as $key => $value) {
+				echo "$key \t=>\t $value<br>";
+			}
+			if(!str_starts_with($dataVirtualMachine['operating_system'], 'w')){
 				/**
 				 * Si la machine virtuelle sélectionné est une Linux
 				 * 
 				 */
-				echo "<p>
-						Vous avez une machine virtuelle Linux<br>
-						Nom de la machine : $name_virtual_machine<br>
-						Lancez un terminal et utilisez la commande suivante :<br>
-						ssh $username]@$ip_address -p 22<br>
-						mot de passe a entrer apres : $password<br>
-					</p>";
+				echo "Lancez un terminal et utilisez la commande suivante :<br>
+				ssh $dataVirtualMachine[username]@$dataVirtualMachine[ip_address] -p 22<br></p>";
 			} else{
 				/**
 				* Si la machine virtuelle sélectionné est une Windows
 				* 
 				*/
-				echo "<p>
-						Vous avez une machine virtuelle Windows<br>
-						Nom de la machine : $name_virtual_machine<br>
-						Lancez un terminal et utilisez la commande suivante :<br>
-						rdesktop $ip_address -u $username -p $password
-					</p>";
+				echo "Lancez un terminal et utilisez la commande suivante :<br>
+				rdesktop [ip_address] -u $dataVirtualMachine[username] -p $dataVirtualMachine[password]</p>";
 			}
 			echo "<p>
 					<br><br>Si l'adresse IP ne s'est pas correctement affichee,<br> 
 					regardez dans le terminal qui a ete execute par l'application <br>
 					Sinon regardez sur le Portail Azure<br>
 					Attendez qu'un terminal soit ouvert par l'application pour continuer<br>
+					Il est conseille d'attendre que les autres scripts de creation de VM aient fini<br>
 					<br>
 					Temps estime : 7 minutes.<br><br>
 					</p>";

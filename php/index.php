@@ -16,7 +16,7 @@
 	 */
 
 	include_once("function.php");
-	set_time_limit(180);
+	set_time_limit(400);
 
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
@@ -44,13 +44,21 @@
 
 		<form action="index.php" method="post">
 		 <BR> <BR>
-			<legend>Renseignez un mot de passe administateur ici si vous utilisez Linux, il sera nécessaire pour effectuer des commandes sudo</legend>
-			<BR>
-			<input type="password" name="sudo" value="" />
-			 <BR> <BR>
-			<legend>Cliquez sur le bouton ci-dessous pour installer les fichiers necessaires</legend>
+		 	<?php
+				if($os == 'Linux') {
+					echo "<legend>Renseignez un mot de passe administateur ici si vous utilisez Linux, il sera nécessaire pour effectuer des commandes sudo</legend>
+							<BR>
+							<input type=password name=sudo />
+					 		<BR><BR>";
+				}
+			?>
+			 <legend>Cliquez sur le bouton ci-dessous pour installer les fichiers necessaires</legend>
 			<BR>
 			<input type="submit" name="install" value="Installation" />	
+			<BR> <BR>
+			<legend>Cliquez sur le bouton ci-dessous pour aller directement à la connexion</legend>
+			<BR>
+			<input type="submit" name="gotoLogin" value="Login" />	
 		</form>
 		
 		<?php
@@ -118,6 +126,10 @@
 		} else {
 			echo "<br>Temps d'installation estime : 120 secondes pour l'installation complète<br>";
 
+		}
+
+		if(isset($_POST['gotoLogin'])) {
+			header("Location: login.php");
 		}
 			
 		?>

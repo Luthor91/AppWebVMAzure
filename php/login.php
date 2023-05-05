@@ -17,6 +17,10 @@
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
+	if(!isset($_SESSION['typeAccount'])){
+
+		$_SESSION['typeAccount'] = 'none';
+	}
 	include_once("function.php");
 ?>
 
@@ -52,18 +56,22 @@
 
 		if( $_POST['username'] == 'boss' && $_POST['password'] == 'boss' ) {
 			
-			header( "Location: selectVM.php" );
+			$_SESSION['typeAccount'] = 'select';
+			header( "Location: main.php" );
 
 		} elseif( $_POST['username'] == 'hitman' && $_POST['password'] == 'hitman' ) {
 
-			header( "Location: defaultVM.php" );
+			$_SESSION['typeAccount'] = 'default';
+			header( "Location: main.php" );
 
 		}  elseif( $_POST['username'] == 'crook' && $_POST['password'] == 'crook' ) {
-
+			
+			$_SESSION['typeAccount'] = 'none';
 			header( "Location: error.php" );
 
 		}else {
 
+			$_SESSION['typeAccount'] = 'none';
 			header( "Location: error.php" );
 
 		}

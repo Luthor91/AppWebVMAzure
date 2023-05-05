@@ -12,7 +12,7 @@
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
-
+	
 	/**
 	 * isValidVMname
 	 *	: Permet de savoir si le nom de la machine virtuelle est valide
@@ -78,8 +78,8 @@
 				$array = array(
 					'TimerDuration' => '10',
 					'startTimer' => 'conn',
-					'defaultOS' => 'debian',
-					'defaultRegion' => 'westeurope',
+					'operating_system' => 'debian',
+					'location' => 'westeurope',
 					'ip_address' => 'ip_address',
 					'name_virtual_machine' => 'VMname'
 				);
@@ -134,6 +134,25 @@
 		}
 		else {
 			$r = shell_exec("$cmd >> $logFilePath 2>&1 &");
+		}
+		return $r;
+	}
+
+	/**
+	 * execInBackground
+	 *	: Permet d'exécuter une commande shell de manière asynchrone
+	* 
+	* @param  string $cmd commande à exécuter
+	* @return mixed code retour 
+	*/
+	function executeCommand(String $cmd): mixed {
+		$logFilePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'log.txt';
+		if (substr(php_uname(), 0, 7) == "Windows"){
+			//$r = pclose(popen("start ". $cmd, "r")); 
+			$r = shell_exec("$cmd");
+		}
+		else {
+			$r = shell_exec("$cmd >> $logFilePath 2>&1");
 		}
 		return $r;
 	}
@@ -236,7 +255,7 @@
 		$lowercase_chars = 'abcdefghijklmnopqrstuvwxyz';
 		$uppercase_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$number_chars = '0123456789';
-		$symbol_chars = '!@#$%^&*()_+-={}[];\',./?';
+		$symbol_chars = '!@#$%^*()_+-={}[];\',./?';
 
 		// Initialisation de la chaîne de caractères pouvant être utilisés pour générer le mot de passe
 		$chars = $lowercase_chars;
