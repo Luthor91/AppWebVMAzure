@@ -1,4 +1,29 @@
 ###########################
+#  Etat de l'application
+###########################
+
+Pour le moment (05/05/2023) l'application est fonctionnelle, elle permet de créer puis supprimer une VM de notre choix, lister les VM et ses ressources (attaché ou non)
+
+###########################
+#  Avertissements
+###########################
+
+Cette version ne fonctionne pas complètement
+Vous pouvez créer une machine virtuelle, voire plusieurs mais elle si une machine se supprime elle risque de suprimer les autres
+Le site en lui-même peut créer qu'une seule machine virtuelle.
+L'exécution du script Python permet de créer un nombre encore indéterminé de VM
+Les futures fonctionnalités seront :
+	-Page web d'informations listant le contenue du groupe de ressource utilisé
+	-Possibilité de stopper, supprimer et redémarrer une VM
+	-Possibilité de créer plusieurs VM via site php
+	-Page web de gestion du compte avec visibilité
+	-Possibilité de se connecter au site via ses identifiants Azure Cloud
+	-Possibilité de vérifier si les packages sont bien installés
+	-Permettre le choix de la VM parmis tout le catalogue Azure
+	
+Une partie de ces fonctionnalités est mis en place, le listage des VM est effectifs, le reste sera fait plus tard.
+
+###########################
 #  Fonctionnement
 ###########################
 
