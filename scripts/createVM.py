@@ -149,11 +149,10 @@ def createVM():
         # Create public ip
         print(Fore.WHITE +'{} > Create and Update Public IP Address'.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
         ip_address = create_public_ip(network_client, compute_client)
-        # here
         try:
             print(Fore.WHITE +"{} > Public ip address : {} is {}".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), VM_NAME, ip_address))
         except:
-             print(Fore.RED +"{} > No public IP address was found for this machine".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))    
+             print(Fore.RED +"{} > No public IP address was found for this machine".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))  
         
         print(Fore.WHITE +'{} > Create Port 22 conn'.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
         # Enable connection on port 22 :
@@ -184,20 +183,23 @@ def createVM():
         
         print(Fore.WHITE +'{} > Start terminal on OS : {}'.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), platform.system()))
        
-        output = "Voici la commande à rentrer dans ce terminal : "
+        info = "Machine: " + VM_NAME + " OS: " + name_os + "  Password: " + PASSWORD + "  Commande :"
+        command = ""
+        
+        
         if check_os(name_os) != 'w':
         # L'OS de la VM est un Linux :
-            output += "ssh " + USERNAME + "@" + ip_address + " -p 22  password : " + PASSWORD
+            command += "ssh " + USERNAME + "@" + ip_address + " -p 22"
         else:
         # L'OS de la VM est un Windows :
-            output += "Voici la commande à rentrer dans ce terminal : \ rdesktop -u " + USERNAME + " -p " + PASSWORD + " " + ip_address + ":3389"
+            command += "rdesktop -u " + USERNAME + " -p " + PASSWORD + " " + ip_address + ":3389"
         
         if platform.system().lower().startswith('w'):
         # L'OS physique est un Windows :
-            os.system("start cmd /k echo " + output)
+            os.system('start cmd /k echo ' + '"' + info + command + '"')
         else:
         # L'OS physique est un Linux :
-            os.system('xterm -hold -e "echo ' + output + '; exec $SHELL" &')
+            os.system('xterm -hold -e "echo ' + info + command + '; exec $SHELL" &')
             
         # timer defined by user
         print(Fore.WHITE +'{} > Waiting {} minutes before deleting'.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), str(timer_duration/60)))
